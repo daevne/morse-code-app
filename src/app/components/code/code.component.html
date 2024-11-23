@@ -1,0 +1,121 @@
+<div class="container mt-4">
+  <div class="row mt-3 text-center">
+    <div class="col-12 col-lg-6 offset-lg-3">
+        <fieldset>
+          <div class="form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              id="message-input"
+              value="message"
+              name="inputOption"
+              aria-label="Message input"
+              [(ngModel)]="inputMode"
+              (change)="reset()"
+            >
+            <label class="form-check-label ms-2" for="message-input">
+              Message input
+            </label>
+          </div>
+          <div class="form-check-inline mb-2">
+            <input
+              class="form-check-input"
+              type="radio"
+              id="code-input"
+              value="code"
+              name="inputOption"
+              aria-label="Code input"
+              [(ngModel)]="inputMode"
+              (change)="reset()"
+            >
+            <label class="form-check-label ms-2" for="code-input">
+              Code input
+            </label>
+          </div>
+        </fieldset>
+    </div>
+  </div>
+
+  @if (inputMode === 'message') {
+    <div class="row mt-3">
+      <div class="col-12 col-lg-6 offset-lg-3">
+        <label>Message</label>
+        <input
+          type="text"
+          [formControl]="inputControl"
+          class="form-control text-center message-input"
+          aria-label="Message input"
+        />
+      </div>
+    </div>
+  }
+
+  @if (inputMode === 'code') {
+    <div class="row mt-3">
+      <div class="col-12 col-lg-6 offset-lg-3">
+        <label>Message</label>
+        <input
+          type="text"
+          class="form-control text-center message-input"
+          [value]="message$ | async"
+          disabled
+          aria-label="Message input"
+        />
+      </div>
+    </div>
+  }
+
+  <div class="row mt-3">
+    <div class="col-12 col-lg-6 offset-lg-3">
+      @if ((code$ | async)?.trim()) {
+        <div class="form-control code-input text-center" disabled>
+          {{ code$ | async }}
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12 col-lg-6 offset-lg-3 d-flex justify-content-evenly">
+      @if (inputMode === 'code') {
+        <button class="btn btn-primary" (click)="addDot()" title="Add a dot to the morse code"><i class="bi bi-dot"></i></button>
+        <button class="btn btn-primary" (click)="addHyphen()" title="Add a hyphen to the morse code"><i class="bi bi-dash"></i></button>
+        <button class="btn btn-primary" (click)="findCode()" title="Add a space and find the morse code">SPACE</button>
+        <button class="btn btn-danger" (click)="handleDelete()" title="Delete the last morse code"><i class="bi bi-backspace"></i></button>
+      }
+
+      <button class="btn btn-outline-primary" (click)="play()" title="Play the sound">
+        Play <i class="bi bi-music-note"></i>
+      </button>
+      <button class="btn btn-outline-danger" (click)="reset()" title="Reset the inputs">
+        Reset <i class="bi bi-arrow-clockwise"></i>
+      </button>
+    </div>
+  </div>
+
+  @if (errorMessage !== '') {
+    <div class="row mt-3">
+      <div class="col-12 col-lg-6 offset-lg-3">
+        <div class="alert alert-danger" role="alert">
+          {{ errorMessage }}
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (inputMode === 'code') {
+    <div class="row mt-5">
+      <div class="col-12 col-lg-6 offset-lg-3 code-table">
+        <small>MORSE CODE TABLE</small>
+        <div class="note">One space means the start of the morse code of the new character. Two spaces means the start of a new word.</div>
+        <div class="d-flex flex-wrap justify-content-center mb-2">
+          <div *ngFor="let code of codeTable" class="m-2">
+            <small class="morse-code">{{ code.char }} {{ code.code }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+  <app-sound></app-sound>
+</div>
