@@ -1,27 +1,41 @@
-# MorseCodeApp
+# Morse Code Translator App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.1.
+This project is a Morse Code Translator built with Angular. It provides an interactive interface for encoding messages to Morse code and decoding Morse code back into text. The app also includes sound playback for Morse code.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Interactive Translation Modes**:
+  - Encode messages into Morse code.
+  - Decode Morse code into readable text.
+- **Real-time Input Handling**:
+  - Dynamically updates translations as you type.
+- **Sound Playback**:
+  - Play Morse code sequences as audio signals.
+- **Error Handling**:
+  - Displays helpful error messages for invalid Morse code inputs.
+- **Reset and Delete Options**:
+  - Clear all inputs and translations or delete specific characters.
 
-## Code scaffolding
+## Technologies Used
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Frontend Framework**: Angular
+- **Reactive Programming**: RxJS (e.g., `BehaviorSubject`, `pipe`, `map`, `switchMap`)
+- **Form Control**: Angular Reactive Forms (`FormControl`)
 
-## Build
+## How to Use
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Input Mode**:
+   - Switch between "Message" mode for text-to-Morse conversion and "Code" mode for Morse-to-text conversion.
+2. **Text Input**:
+   - Type a message in the input field. The Morse code translation updates automatically.
+3. **Manual Controls**:
+   - Use buttons to add dots (`.`), dashes (`-`), and spaces to the Morse code.
+4. **Playback**:
+   - Click the "Play" button to hear the Morse code as audio.
+5. **Reset**:
+   - Clear the input field and translations using the "Reset" button.
 
-## Running unit tests
+## Future Enhancements
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Add unit tests for key components.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
