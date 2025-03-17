@@ -24,15 +24,15 @@ This project is a **Morse Code Translator** built with **Angular**. It provides 
 
 ## How to Use
 
-1️⃣ **Input Mode**:
+1. **Input Mode**:
    - Switch between **"Message" mode** for text-to-Morse conversion and **"Code" mode** for Morse-to-text conversion.
-2️⃣ **Text Input**:
+2. **Text Input**:
    - Type a message in the input field. The Morse code translation updates automatically.
-3️⃣ **Manual Controls**:
+3. **Manual Controls**:
    - Use buttons to add dots (`.`), dashes (`-`), and spaces to the Morse code.
-4️⃣ **Playback**:
+4. **Playback**:
    - Click the **"Play"** button to hear the Morse code as audio.
-5️⃣ **Reset**:
+5. **Reset**:
    - Clear the input field and translations using the **"Reset"** button.
 
 ## Future Enhancements
